@@ -59,6 +59,7 @@ public class DatabaseConfiguration {
         //query de teste
         config.setConnectionTestQuery("select 1");
 
+
         return new HikariDataSource(config);
     }
 }
