@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: libraryapi
+  datasource:
+    url: jdbc:postgres://192.168.56.111:5432/library
+    username: casaos
+    password: casaos
+    driver-class-name: org.postgresql.Driver
