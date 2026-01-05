@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -27,10 +28,13 @@ public class Autor {
     @Column (length = 50, nullable = false)
     private String nacionalidade;
 
+    @OneToMany(mappedBy = "autor")
+    private List<Livro> livros;
+
 
     @Deprecated
     public Autor(){
-
+        //para uso do framework
     }
 
     public Autor(String nome, LocalDate dataNascimento, String nacionalidade){
@@ -38,4 +42,6 @@ public class Autor {
         this.dataNascimento = dataNascimento;
         this.nacionalidade = nacionalidade;
     }
+
+
 }
