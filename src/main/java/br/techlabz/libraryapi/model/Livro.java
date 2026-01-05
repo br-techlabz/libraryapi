@@ -1,6 +1,7 @@
 package br.techlabz.libraryapi.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +11,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "livro")
-@Getter
-@Setter
+@Data
+
 public class Livro {
 
     @Id
@@ -28,8 +29,9 @@ public class Livro {
     @Column(name = "data_publicacao")
     private LocalDate dataPublicacao;
 
-    @Column
-    private String genero;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 30, nullable = false)
+    private GeneroLivro genero;
 
     @Column(precision = 18, scale = 2)
     private Double preco;
