@@ -3,6 +3,7 @@ package br.techlabz.libraryapi.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -26,4 +27,15 @@ public class Autor {
     @Column (length = 50, nullable = false)
     private String nacionalidade;
 
+
+    @Deprecated
+    public Autor(){
+
+    }
+
+    public Autor(String nome, LocalDate dataNascimento, String nacionalidade){
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.nacionalidade = nacionalidade;
+    }
 }
