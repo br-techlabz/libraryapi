@@ -11,12 +11,14 @@ import java.time.LocalDate;
 public class Application {
 
 	public static void main(String[] args) {
-		var context = SpringApplication.run(Application.class, args);
-		AutorRepository repository = context.getBean(AutorRepository.class);
+		//var context = SpringApplication.run(Application.class, args);
+		SpringApplication.run(Application.class, args);
+		//AutorRepository repository = context.getBean(AutorRepository.class);
 
-		exemploSalvarRegistro(repository);
+		//exemploSalvarRegistro(repository);
 	}
 
+	/**
 	public static void exemploSalvarRegistro(AutorRepository autorRepository) {
 		Autor autor = new Autor();
 		autor.setNome("Jose Saramago");
@@ -25,4 +27,5 @@ public class Application {
 		var autorSalvo = autorRepository.save(autor);
 		System.out.println("Autor Salvo: " + autorSalvo);
 	}
+	 */
 }
