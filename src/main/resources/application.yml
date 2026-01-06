@@ -6,3 +6,7 @@ spring:
     username: casaos
     password: casaos
     driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
