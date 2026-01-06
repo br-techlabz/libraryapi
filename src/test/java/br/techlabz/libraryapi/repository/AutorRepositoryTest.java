@@ -3,6 +3,7 @@ package br.techlabz.libraryapi.repository;
 import br.techlabz.libraryapi.model.Autor;
 import br.techlabz.libraryapi.model.GeneroLivro;
 import br.techlabz.libraryapi.model.Livro;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -82,7 +83,7 @@ public class AutorRepositoryTest {
     }
 
     @Test
-    void salvarAutorComLivrosTest(){
+    void salvarAutorComLivrosTest() {
         Autor autor = new Autor();
         autor.setNome("Marcelo Andrade");
         autor.setNacionalidade("Portuguesa");
@@ -111,4 +112,19 @@ public class AutorRepositoryTest {
         repository.save(autor);
         //livroRepository.saveAll(autor.getLivros());
 
-    }}
+    }
+
+    @Test
+    //@Transactional
+    void listarLivrosAutor(){
+        var id = UUID.fromString("8291a494-2c09-4b9d-8ca7-2cd0e44d6f38");
+        var autor = repository.findById(id).get();
+
+        //buscar os livros do autor no mapeamento Lazy
+        List<Livro> livros =livroRepository.findByAutor(autor);
+        autor.setLivros(livros);
+
+        autor.getLivros().forEach(System.out::println);
+    }
+}
+

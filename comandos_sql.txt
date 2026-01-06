@@ -20,6 +20,6 @@ create table livro(
 
 
 
-SELECT l.titulo as título_livro, l.isbn as ISBN, a.nome as nome_autor FROM livro l
+SELECT l.id as id_livro, l.titulo as título_livro, l.isbn as ISBN, a.nome as nome_autor, a.id as id_autor FROM livro l
 	JOIN autor a
 		ON l.id_autor = a.id

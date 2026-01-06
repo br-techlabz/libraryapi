@@ -14,7 +14,7 @@ import java.util.UUID;
 @Table(name = "autor", schema = "public")
 @Getter //gera os metodos getters (Lombok)
 @Setter // gera os metodos setters (Lombok)
-@ToString
+@ToString(exclude = "livros")
 public class Autor {
 
     @Id
