@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @SpringBootTest
@@ -65,6 +67,50 @@ class LivroRepositoryTest {
 
         repository.save(livro);
         System.out.println("Livro salvo: " + livro);
+    }
+
+    @Test
+    void recuperarPeloIdTest(){
+        Optional<Livro> recuperado = repository.findById(UUID.fromString("77024fb3-82c0-4f26-9aa9-74c20173d1c6"));
+        if(recuperado.isPresent()){
+            System.out.println("Livro recuperado: " + recuperado);
+        }
+    }
+
+
+    @Test
+    void atualizarTest(){
+        Autor autor = new Autor();
+        autor.setNome("Renata Santos");
+        autor.setDataNascimento(LocalDate.of(1979,5,7));
+        autor.setNacionalidade("Brasileira");
+
+        Optional<Livro> recuperado = repository.findById(UUID.fromString("77024fb3-82c0-4f26-9aa9-74c20173d1c6"));
+        if(recuperado.isPresent()){
+            Livro toUpdate = recuperado.get();
+            toUpdate.setPreco(BigDecimal.valueOf(120.00));
+            toUpdate.setAutor(autor);
+            repository.save(toUpdate);
+            System.out.println("Livro Atualizado " + toUpdate);
+        }
+    }
+
+    @Test
+    void deleteByIdTest(){
+        repository.deleteById(UUID.fromString("365392f9-f48d-4a2a-9f3d-8f89257b9669"));
+        System.out.println("Livro excluido!");
+    }
+
+    @Test
+    void listAllTest(){
+        List<Livro> lista = repository.findAll();
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void countTest(){
+        var nreg = repository.count();
+        System.out.println("Total de livros cadastrados: " + nreg);
     }
 
 }
