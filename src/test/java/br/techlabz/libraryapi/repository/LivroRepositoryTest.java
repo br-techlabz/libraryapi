@@ -46,4 +46,25 @@ class LivroRepositoryTest {
 
     }
 
+    @Test
+    void salvarCascadeTest(){
+
+        Autor autor = new Autor();
+        autor.setNome("Willian Cevassi");
+        autor.setDataNascimento(LocalDate.of(1982,6,15));
+        autor.setNacionalidade("Brasileira");
+        System.out.printf("Autor Salvo: " + autor);
+
+        Livro livro = new Livro();
+        livro.setIsbn("15896-62");
+        livro.setTitulo("A viagem 2");
+        livro.setDataPublicacao(LocalDate.of(1989, 12, 25));
+        livro.setGenero(GeneroLivro.FICCAO);
+        livro.setPreco(BigDecimal.valueOf(59.90));
+        livro.setAutor(autor);
+
+        repository.save(livro);
+        System.out.println("Livro salvo: " + livro);
+    }
+
 }
