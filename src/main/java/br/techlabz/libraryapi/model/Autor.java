@@ -3,6 +3,7 @@ package br.techlabz.libraryapi.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Table(name = "autor", schema = "public")
 @Getter //gera os metodos getters (Lombok)
 @Setter // gera os metodos setters (Lombok)
+@ToString
 public class Autor {
 
     @Id
