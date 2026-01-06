@@ -3,6 +3,7 @@ package br.techlabz.libraryapi.repository;
 import br.techlabz.libraryapi.model.Autor;
 import br.techlabz.libraryapi.model.GeneroLivro;
 import br.techlabz.libraryapi.model.Livro;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -111,6 +112,17 @@ class LivroRepositoryTest {
     void countTest(){
         var nreg = repository.count();
         System.out.println("Total de livros cadastrados: " + nreg);
+    }
+
+    @Test
+    @Transactional //tecnica usada para carregar objetos do tipo Lazy dentro de uma transação
+    void buscarLivroTest(){
+        UUID id = UUID.fromString("f34c75c6-73b4-42fb-b84a-fb649973925d");
+        Livro livro = repository.findById(id).orElse(null);
+        System.out.println("Livro:");
+        System.out.println(livro.getTitulo());
+        System.out.println("Autor:");
+        System.out.println(livro.getAutor().getNome());
     }
 
 }
