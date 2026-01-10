@@ -173,19 +173,19 @@ class LivroRepositoryTest {
     }
 
     @Test
-    void listarTodos(){
+    void listarTodosTest(){
         List<Livro> livros = repository.listarTodosOrdenadoPorTituloePreco();
         livros.forEach(System.out::println);
     }
 
     @Test
-    void listarAutorDosLivros(){
+    void listarAutorDosLivrosTest(){
         List<Autor> autores = repository.listarAutorDosLivros();
         autores.forEach(System.out::println);
     }
 
     @Test
-    void listarGenerosDosAutores(){
+    void listarGenerosDosAutoresTest(){
         List<String> generos = repository.listarGenerosDeAutoresBrasileiros();
         generos.forEach(System.out::println);
     }
