@@ -144,5 +144,34 @@ class LivroRepositoryTest {
     }
 
 
+    @Test
+    void pesquisaPorIntervaloDataTest(){
+        LocalDate dataInicial = LocalDate.of(1980, 1, 1);
+        LocalDate dataFinal = LocalDate.of(1990, 12, 31);
+        List<Livro> livros = repository.findByDataPublicacaoBetween(dataInicial,dataFinal);
+        livros.forEach(System.out::println);
+    }
+
+    @Test
+    void pesquisaPorTituloLikeTest(){
+        List<Livro> livros = repository.findByTituloLike("%viagem%");
+        livros.forEach(System.out::println);
+    }
+
+    @Test
+    void pesquisaPorInicioTituloTest(){
+        List<Livro> livros = repository.findByTituloStartingWith("A viagem");
+        livros.forEach(System.out::println);
+    }
+
+    @Test
+    void pesquisaPorIntervaloDataOrdenadaTest(){
+        LocalDate dataInicial = LocalDate.of(1980, 1, 1);
+        LocalDate dataFinal = LocalDate.of(1990, 12, 31);
+        List<Livro> livros = repository.findByDataPublicacaoBetweenOrderByDataPublicacao(dataInicial,dataFinal);
+        livros.forEach(System.out::println);
+    }
+
+
 
 }
