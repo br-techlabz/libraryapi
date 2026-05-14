@@ -28,7 +28,7 @@ public class Livro {
     @Column(name = "data_publicacao")
     private LocalDate dataPublicacao;
 
-    @Column(precision = 18, scale = 2)
+    @Column(precision = 12)
     private Double preco;
 
     @Enumerated(EnumType.STRING)

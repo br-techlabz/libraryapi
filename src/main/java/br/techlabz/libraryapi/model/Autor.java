@@ -27,7 +27,7 @@ public class Autor implements Serializable {
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @Column(name="nascionalidade",length = 50)
+    @Column(length = 50)
     private String nacionalidade;
 
     @OneToMany(mappedBy = "autor")
