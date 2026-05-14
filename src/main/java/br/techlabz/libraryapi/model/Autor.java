@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -28,6 +29,11 @@ public class Autor implements Serializable {
 
     @Column(name="nascionalidade",length = 50)
     private String nacionalidade;
+
+    @OneToMany(mappedBy = "autor")
+    private List<Livro> livros;
+
+
 
     public Autor(){}
 
