@@ -3,9 +3,11 @@ package br.techlabz.libraryapi.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -14,6 +16,7 @@ import java.util.UUID;
 @Table(name = "autor", schema = "public")
 @Getter
 @Setter
+@ToString
 public class Autor implements Serializable {
 
     @Id
@@ -31,7 +34,8 @@ public class Autor implements Serializable {
     private String nacionalidade;
 
     @OneToMany(mappedBy = "autor")
-    private List<Livro> livros;
+    @Transient
+    private List<Livro> livros = new ArrayList<>();
 
 
 
