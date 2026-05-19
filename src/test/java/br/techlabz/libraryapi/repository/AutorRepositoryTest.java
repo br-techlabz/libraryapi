@@ -18,7 +18,7 @@ public class AutorRepositoryTest {
 
     @Test
     public void salvarTest(){
-        Autor a1 = new Autor(null,"Maria", LocalDate.of(1975, 8, 18),"Brasileira");
+        Autor a1 = new Autor(null,"Willian", LocalDate.of(1975, 8, 18),"Brasileira");
         Autor autorSalvo = repo.save(a1);
         System.out.println("Autor salvo " + autorSalvo);
     }
